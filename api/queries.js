@@ -47,4 +47,34 @@ export async function getMonth(Month) {
 }
 // const month = await getMonth('%September%')
 
+// handle filter for searching
+export async function filterEpisodes(colors, subjects, months, matchType) {
+  // Construct the SQL query based on the received parameters and matchType
+  let query = `SELECT * FROM paintings_data WHERE `;
+  
+  // Modify the WHERE clause to include selected filters
+  const conditions = [];
+  
+  if (colors && colors.length) {
+    conditions.push(`colors IN (${colors.map(color => pool.escape(color)).join(',')})`);
+  }
+  
+  if (subjects && subjects.length) {
+    conditions.push(`subject IN (${subjects.map(subject => pool.escape(subject)).join(',')})`);
+  }
+  
+  if (months && months.length) {
+    conditions.push(`Month IN (${months.map(month => pool.escape(month)).join(',')})`);
+  }
+
+  if (matchType === 'all') {
+    query += conditions.join(' AND ');
+  } else if (matchType === 'any') {
+    query += conditions.join(' OR ');
+  }
+  
+  const [rows] = await pool.query(query);
+  return rows;
+}
+
 // console.log(subjectResult)
