@@ -15,7 +15,7 @@ export async function getPaintings() {
   const [rows] = await pool.query("SELECT * FROM paintings_data")
   return rows
 }
-const paintings = await getPaintings()
+// const paintings = await getPaintings()
 
 export async function getSubject(subject) {
   const [rows] = await pool.query(`
@@ -25,7 +25,7 @@ export async function getSubject(subject) {
   `, [subject])
   return rows[0]
 }
-const subjectResult = await getSubject('%tree%')
+// const subjectResult = await getSubject('%tree%')
 
 export async function getColor(colors) {
   const [rows] = await pool.query(`
@@ -35,7 +35,7 @@ export async function getColor(colors) {
   `, [colors])
   return rows[0]
 }
-const colorsResult = await getColor('%Prussian Blue%')
+// const colorsResult = await getColor('%Prussian Blue%')
 
 export async function getMonth(Month) {
   const [rows] = await pool.query(`
@@ -45,6 +45,6 @@ export async function getMonth(Month) {
   `, [Month])
   return rows[0]
 }
-const month = await getMonth('%September%')
+// const month = await getMonth('%September%')
 
-console.log(subjectResult)
+// console.log(subjectResult)

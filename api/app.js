@@ -1,8 +1,15 @@
 import express from 'express'
 const app = express()
 
-app.get('/paintings_data', (req, res) => {
-  res.send("This should be the paintings data")
+import { 
+  getPaintings, 
+  getSubject, 
+  getColor, 
+  getMonth } from '../api/queries.js'
+
+app.get('/paintings_data', async(req, res) => {
+  const paintings = await getPaintings()
+  res.send(paintings)
 }) 
 
 
