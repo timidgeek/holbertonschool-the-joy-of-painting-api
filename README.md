@@ -5,10 +5,13 @@ In this project we are going to explore the idea of ETL (Extract, Transform, Loa
 
 Our task is to organize Bob Ross's extensive painting library. We were given free range on choice of implementation. 
 
+## Pandas 🐼
 I chose to utilize Pandas to meticulously clean and structure data from three distinctly structured datasets. I used Jupyter Notebook to execute the Pandas code in pieces, which made it easy and effective to vizualize how the code progressed.
 
+## MySQL 🗃️
 For data storage and retrieval, I used MySQL. I wrote the queries in SQL Notebook, which to my enjoyment functioned just like Jupyter. To seamlessly load the CSV data straight into the database, I used MySQL workbench. I had to do a lot of workarounds, as my computer is running on an OS that is over four years old and unable to update.
 
+## API 💻
 The final step is to engineer a custom API, allowing users to access and efficiently navigate the repository of 403 painting videos, enhancing search and sorting functionalities. The requirements for searching were as follows:
 
 ```
@@ -24,6 +27,9 @@ Color Palette
 
 This has been the most exciting Holberton project to date!
 
-## Contributors:
+## Contributors 📝
 
 Lindsey Thomas | [timidgeek.com]("timidgeek.com") ✨
+
+
+![Bob and a racoon](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGhHNMDPJWFYW1yp9VZXNFNOhBfmP2DEd2fA&usqp=CAU)
