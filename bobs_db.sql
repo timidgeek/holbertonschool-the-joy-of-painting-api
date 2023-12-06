@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS paintings_data (
   Date DATE,
   Month VARCHAR(20),
   Episode VARCHAR(20),
+  id INT,
   painting_index INT,
   img_src VARCHAR(255),
   youtube_src VARCHAR(255),
@@ -87,6 +88,11 @@ CREATE TABLE IF NOT EXISTS paintings_data (
 );
 
 SELECT * FROM paintings_data WHERE subject LIKE '%tree%';
+
+-- ALTER TABLE paintings_data
+-- ADD COLUMN id INT FIRST;
+-- ALTER TABLE paintings_data 
+-- MODIFY COLUMN id INT AFTER Episode;
 
 SELECT * FROM paintings_data WHERE colors LIKE '%Titanium White%';
 
