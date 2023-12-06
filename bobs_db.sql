@@ -1,9 +1,10 @@
 SET GLOBAL local_infile=true;
+GRANT FILE ON *.* TO 'root'@'localhost';
 CREATE DATABASE IF NOT EXISTS bobs_db;
 
 USE bobs_db;
 CREATE TABLE IF NOT EXISTS paintings_data (
-  Title VARCHAR(60),
+  Title VARCHAR(60) PRIMARY KEY,
   Date DATE,
   Month VARCHAR(20),
   Episode VARCHAR(20),
@@ -84,8 +85,16 @@ CREATE TABLE IF NOT EXISTS paintings_data (
   Winter BOOLEAN
 );
 
-LOAD DATA LOCAL
-  INFILE "bob_rocks.csv"
-  INTO TABLE paintings_data
-  FIELDS TERMINATED BY ','
-  IGNORE 1 LINES;
+SELECT * FROM paintings_data WHERE SubjectDescription LIKE '%tree%';
+
+SELECT * FROM paintings_data WHERE colors LIKE '%Titanium White%';
+
+SELECT * FROM paintings_data WHERE Month = 'January';
+
+-- ALTER TABLE paintings_data
+-- ADD PRIMARY KEY (Title);
+
+-- LOAD DATA INFILE "bob_rocks.csv"
+--   INTO TABLE paintings_data
+--   FIELDS TERMINATED BY ','
+--   IGNORE 1 LINES;
