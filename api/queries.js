@@ -32,7 +32,7 @@ export async function getColor(colors) {
   SELECT * 
   FROM paintings_data
   WHERE colors LIKE ?
-  `, [colors])
+  `, [`%${colors}%`])
   return rows[0]
 }
 // const colorsResult = await getColor('%Prussian Blue%')
@@ -41,8 +41,10 @@ export async function getMonth(Month) {
   const [rows] = await pool.query(`
   SELECT * 
   FROM paintings_data
-  WHERE colors = ?
-  `, [Month])
+  WHERE month = ?
+  `, [`%${Month}%`])
+
+  console.log('Generated SQL query:', query);
   return rows[0]
 }
 // const month = await getMonth('%September%')

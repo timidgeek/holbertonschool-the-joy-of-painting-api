@@ -10,28 +10,28 @@ import {
 // route handler to retrieve all paintings info
 app.get('/paintings_data', async(req, res) => {
   const paintings = await getPaintings()
-  res.send(paintings)
+  res.json(paintings)
 })
 
 // route handler to retrieve subject
 app.get('/paintings_data/subject', async(req, res) => {
   const { subject } = req.query
   const paintings = await getSubject(subject)
-  res.send(paintings)
+  res.json(paintings)
 })
 
 // route handler to retrieve color
 app.get('/paintings_data/colors', async (req, res) => {
   const { colors } = req.query;
   const paintings = await getColor(colors);
-  res.send(paintings);
+  res.json(paintings);
 });
 
 // route handler to retrieve subject
 app.get('/paintings_data/Month', async(req, res) => {
   const { month } = req.query
   const paintings = await getMonth(month)
-  res.send(paintings)
+  res.json(paintings)
 })
 
 // Endpoint to filter episodes based on multiple criteria
