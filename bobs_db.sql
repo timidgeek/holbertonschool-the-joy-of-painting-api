@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS paintings_data (
   youtube_src VARCHAR(255),
   num_colors INT,
   colors VARCHAR(255),
+  subject VARCHAR(255),
   color_hex VARCHAR(255),
   Black_Gesso BOOLEAN,
   Bright_Red BOOLEAN,
@@ -85,7 +86,7 @@ CREATE TABLE IF NOT EXISTS paintings_data (
   Winter BOOLEAN
 );
 
-SELECT * FROM paintings_data WHERE SubjectDescription LIKE '%tree%';
+SELECT * FROM paintings_data WHERE subject LIKE '%tree%';
 
 SELECT * FROM paintings_data WHERE colors LIKE '%Titanium White%';
 
