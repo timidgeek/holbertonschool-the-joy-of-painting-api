@@ -48,29 +48,32 @@ export async function getMonth(Month) {
 // handle filter for searching
 export async function filterEpisodes(colors, subject, Month, matchType) {
   // Construct the SQL query based on the received parameters and matchType
-  let query = `SELECT * FROM paintings_data WHERE `;
+  let query = `SELECT * FROM paintings_data`;
   
-  // Modify the WHERE clause to include selected filters
   const conditions = [];
+  const values = [];
   
   if (colors && colors.length) {
-    conditions.push(`colors IN (${colors.map(color => pool.escape(color)).join(',')})`);
-  }
-  
-  if (subject && subject.length) {
-    conditions.push(`subject IN (${subject.map(subject => pool.escape(subject)).join(',')})`);
-  }
-  
-  if (Month && Month.length) {
-    conditions.push(`Month IN (${Month.map(Month => pool.escape(Month)).join(',')})`);
+    conditions.push('colors IN (?)');
+    values.push(colors);
   }
 
-  if (matchType === 'all') {
-    query += conditions.join(' AND ');
-  } else if (matchType === 'any') {
-    query += conditions.join(' OR ');
+  if (subject && subject.length) {
+    conditions.push('subject IN (?)');
+    values.push(subject);
   }
+
+  if (Month && Month.length) {
+    conditions.push('Month IN (?)');
+    values.push(Month);
+  }
+
+  // Add WHERE clause if conditions exist
+  if (conditions.length > 0) {
+    query += ' WHERE ';
+    query += conditions.join(matchType === 'all' ? ' AND ' : ' OR ');
+    }
   
-  const [rows] = await pool.query(query); 
+  const [rows] = await pool.query(query, values.flat()); 
   return rows;
 }
