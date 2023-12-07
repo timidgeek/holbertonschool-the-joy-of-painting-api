@@ -31,7 +31,7 @@ app.get('/paintings_data/colors', async (req, res) => {
 app.get('/paintings_data/Month', async(req, res) => {
   const { Month } = req.query
   const paintings = await getMonth(Month)
-  res.json(paintings)
+  res.json(paintings);
 })
 
 // Endpoint to filter episodes based on multiple criteria

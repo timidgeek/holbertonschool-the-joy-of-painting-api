@@ -27,13 +27,6 @@ export async function getSubject(subject) {
 }
 
 export async function getColor(colors) {
-  // const [rows] = await pool.query(`
-  // SELECT * 
-  // FROM paintings_data
-  // WHERE colors LIKE ?
-  // `, [`%${colors}%`])
-  // return rows
-
   const query = `
   SELECT * 
   FROM paintings_data
@@ -47,7 +40,7 @@ export async function getMonth(Month) {
   const [rows] = await pool.query(`
   SELECT * 
   FROM paintings_data
-  WHERE month = ?
+  WHERE Month LIKE ?
   `, [`%${Month}%`])
   return rows
 }
