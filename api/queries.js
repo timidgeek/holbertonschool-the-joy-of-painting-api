@@ -15,27 +15,34 @@ export async function getPaintings() {
   const [rows] = await pool.query("SELECT * FROM paintings_data")
   return rows
 }
-// const paintings = await getPaintings()
 
 export async function getSubject(subject) {
-  const [rows] = await pool.query(`
-  SELECT * 
-  FROM paintings_data
-  WHERE subject LIKE ?
-  `, [subject])
-  return rows[0]
+  const query = `
+    SELECT * 
+    FROM paintings_data
+    WHERE subject LIKE ?
+  `;
+  const [rows] = await pool.query(query, [`%${subject}%`]);
+  return rows;
 }
-// const subjectResult = await getSubject('%tree%')
+
 
 export async function getColor(colors) {
-  const [rows] = await pool.query(`
+  // const [rows] = await pool.query(`
+  // SELECT * 
+  // FROM paintings_data
+  // WHERE colors LIKE ?
+  // `, [`%${colors}%`])
+  // return rows
+
+  const query = `
   SELECT * 
   FROM paintings_data
   WHERE colors LIKE ?
-  `, [`%${colors}%`])
-  return rows[0]
+  `;
+  const [rows] = await pool.query(query, [`%${colors}%`]);
+  return rows;
 }
-// const colorsResult = await getColor('%Prussian Blue%')
 
 export async function getMonth(Month) {
   const [rows] = await pool.query(`
@@ -43,11 +50,8 @@ export async function getMonth(Month) {
   FROM paintings_data
   WHERE month = ?
   `, [`%${Month}%`])
-
-  console.log('Generated SQL query:', query);
-  return rows[0]
+  return rows
 }
-// const month = await getMonth('%September%')
 
 // handle filter for searching
 export async function filterEpisodes(colors, subjects, months, matchType) {
@@ -78,5 +82,3 @@ export async function filterEpisodes(colors, subjects, months, matchType) {
   const [rows] = await pool.query(query);
   return rows;
 }
-
-// console.log(subjectResult)

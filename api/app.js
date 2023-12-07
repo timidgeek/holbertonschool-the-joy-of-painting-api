@@ -29,18 +29,18 @@ app.get('/paintings_data/colors', async (req, res) => {
 
 // route handler to retrieve subject
 app.get('/paintings_data/Month', async(req, res) => {
-  const { month } = req.query
-  const paintings = await getMonth(month)
+  const { Month } = req.query
+  const paintings = await getMonth(Month)
   res.json(paintings)
 })
 
 // Endpoint to filter episodes based on multiple criteria
 app.get('/episodes', async (req, res) => {
-  const { colors, subjects, months, matchType } = req.query;
+  const { colors, subject, Month, matchType } = req.query;
 
   // Use the received parameters to form the query
   // Based on the matchType, construct the query accordingly
-  const episodes = await filterEpisodes(colors, subjects, months, matchType);
+  const episodes = await filterEpisodes(colors, subject, Month, matchType);
 
   res.json(episodes);
 });
