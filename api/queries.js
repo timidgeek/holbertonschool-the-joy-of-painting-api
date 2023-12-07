@@ -26,7 +26,6 @@ export async function getSubject(subject) {
   return rows;
 }
 
-
 export async function getColor(colors) {
   // const [rows] = await pool.query(`
   // SELECT * 
