@@ -46,7 +46,7 @@ export async function getMonth(Month) {
 }
 
 // handle filter for searching
-export async function filterEpisodes(colors, subjects, months, matchType) {
+export async function filterEpisodes(colors, subject, Month, matchType) {
   // Construct the SQL query based on the received parameters and matchType
   let query = `SELECT * FROM paintings_data WHERE `;
   
@@ -57,12 +57,12 @@ export async function filterEpisodes(colors, subjects, months, matchType) {
     conditions.push(`colors IN (${colors.map(color => pool.escape(color)).join(',')})`);
   }
   
-  if (subjects && subjects.length) {
-    conditions.push(`subject IN (${subjects.map(subject => pool.escape(subject)).join(',')})`);
+  if (subject && subject.length) {
+    conditions.push(`subject IN (${subject.map(subject => pool.escape(subject)).join(',')})`);
   }
   
-  if (months && months.length) {
-    conditions.push(`Month IN (${months.map(month => pool.escape(month)).join(',')})`);
+  if (Month && Month.length) {
+    conditions.push(`Month IN (${Month.map(Month => pool.escape(Month)).join(',')})`);
   }
 
   if (matchType === 'all') {
@@ -71,6 +71,6 @@ export async function filterEpisodes(colors, subjects, months, matchType) {
     query += conditions.join(' OR ');
   }
   
-  const [rows] = await pool.query(query);
+  const [rows] = await pool.query(query); 
   return rows;
 }

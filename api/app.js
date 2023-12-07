@@ -5,7 +5,8 @@ import {
   getPaintings, 
   getSubject, 
   getColor, 
-  getMonth } from '../api/queries.js'
+  getMonth,
+  filterEpisodes } from '../api/queries.js'
 
 // route handler to retrieve all paintings info
 app.get('/paintings_data', async(req, res) => {
