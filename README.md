@@ -11,8 +11,8 @@ I chose to utilize Pandas to meticulously clean and structure data from three di
 ## MySQL 🗃️
 For data storage and retrieval, I used MySQL. I wrote the queries in SQL Notebook, which to my enjoyment functioned just like Jupyter. To seamlessly load the CSV data straight into the database, I used MySQL workbench. I had to do a lot of workarounds, as my computer is running on an OS that is over four years old and unable to update.
 
-## API 💻
-The final step is to engineer a custom API, allowing users to access and efficiently navigate the repository of 403 painting videos, enhancing search and sorting functionalities. The requirements for searching were as follows:
+## Express & NodeJS 💻
+The final step is to engineer a custom API, allowing users to access and efficiently navigate the repository of 403 painting videos. I used Express and NodeJS to create my API and queries. The requirements for searching were as follows:
 
 ```
 Month of original broadcast
